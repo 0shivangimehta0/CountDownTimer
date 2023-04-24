@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width initial-scale=1" >
+        <title>COUNTDOWNTIMER</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+        <style>
+            body{
+                background-color:grey;
+                height:auto;
+                width: auto;
+            }
+            h1{
+                text-align: center;
+                margin:80px 50px ;
+                font-family:"Bruno Ace Sc",sans-serif;
+                font-weight:bolder;
+                font-size: 45px;
+            }
+            h2{
+                text-align: center;
+                margin:80px 50px ;
+                font-family:sans-serif;
+                font-weight:bolder;
+                font-size: 45px;
+            }
+            p{
+                text-align: center;
+                font-size:50px;
+
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Count Down Timer</h1>
+        <h2>Happy Birthday Shivangi</h2>
+        <p id="display"></p>
+
+    </body>
+    <script>
+        //set count down date
+        let countdowndate = new Date("21 June 2023 , 00:00:00").getTime();
+
+        let x = setInterval(function() {
+            let now = new Date().getTime();
+            let distance = countdowndate - now ;
+             
+            let days = Math.floor(distance / (1000*60*60*24));
+            let hours = Math.floor((distance %(1000*60*60*24))/(1000*60*60));
+            let minutes = Math.floor ((distance % (1000*60*60))/(1000*60));
+            let seconds = Math.floor((distance % (1000*60))/1000);
+
+            document.getElementById("display").innerHTML = days + "d " + hours + "h "+ minutes + " m "+ seconds + "s";
+           if(distance<0){
+            clearInterval(x);
+                document.getElementById("display").innerHTML="EXPIRED";
+           }
+        },1000)
+    </script>
+</html>
